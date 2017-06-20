@@ -22,11 +22,11 @@ export class SocketProvider {
       this.events.publish('socket:connected');
     });
 
-    this.socket.on('disconnect',  () => {
+    this.socket.on('disconnect', () => {
       this.events.publish('socket:disconnected');
     });
 
-    this.socket.on('canbus',  data => {
+    this.socket.on('canbus', (data) => {
       this.events.publish('canbus:data', data);
       //console.log('canbus data:', data);
     })

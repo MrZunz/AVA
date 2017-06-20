@@ -6,9 +6,12 @@ import { Frame, Byte } from '../../models/canbus';
 export class CanbusProvider {
 
   frames: Object = {};
+  numberOfFramesPerSecond = 0;
 
   constructor(public events: Events) {
     events.subscribe('canbus:data', (data) => {
+
+      this.numberOfFramesPerSecond++;
 
       let newFrame = new Frame();
       newFrame.id = new Byte(data.id);
@@ -42,6 +45,11 @@ export class CanbusProvider {
 
     });
 
+    setInterval(() => {
+      console.log('Number of frames to proces in one second:', this.numberOfFramesPerSecond);
+      this.numberOfFramesPerSecond = 0;
+    }, 1000);
+
     // Fake data
     // setInterval(() => {
     //   //this.generateFakeFrame();
@@ -50,12 +58,13 @@ export class CanbusProvider {
     // }, 1)
 
     // MORE FAKE DATA FFS
-    //this.Render();
+    this.Render();
   }
 
   Render = () => {
     //this.generateFakeFrame();
-    for(var i = 0; i < 15; i++) {
+    for(var i = 0; i < 25; i++) {
+      this.numberOfFramesPerSecond++;
       this.events.publish('canbus:data', this.generateFakeData());
     }
 
