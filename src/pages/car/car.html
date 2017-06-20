@@ -1,0 +1,69 @@
+<titlebar [title]="'Car'"></titlebar>
+
+<ion-content padding>
+  <ion-slides pager>
+
+    <ion-slide>
+        <ion-grid>
+          <ion-row>
+            <ion-col col-6>
+              <ion-card>
+                <ion-card-header>
+                  Engine
+                </ion-card-header>
+                <ion-list>
+                  <button ion-item>
+                    <ion-icon name="speedometer" item-left></ion-icon>
+                    137
+                    <ion-note>km/h</ion-note>
+                  </button>
+                  <button ion-item>
+                    <ion-icon name="refresh-circle" item-left></ion-icon>
+                    3000
+                    <ion-note>rpm</ion-note>
+                  </button>
+                  <button ion-item>
+                    <ion-icon name="water" item-left></ion-icon>
+                    4.0
+                    <ion-note>100km</ion-note>
+                  </button>
+                  <!--<button ion-item>
+                    <ion-icon name="pin" item-left></ion-icon>
+                    Bouwmeestershoeve
+                  </button>-->
+                </ion-list>
+              </ion-card>
+            </ion-col>
+            <ion-col col-6>
+              <ion-card>
+                <ion-card-header>
+                  Windows
+                </ion-card-header>
+                <ion-list>
+                  <button ion-item>
+                    <!--<ion-icon name="square-outline" item-left></ion-icon>-->
+                    100%
+                    <ion-note>Driver's side</ion-note>
+                  </button>
+                  <button ion-item>
+                    <!--<ion-icon name="square-outline" item-left></ion-icon>-->
+                    100%
+                    <ion-note>Passenger's side</ion-note>
+                  </button>
+                </ion-list>
+              </ion-card>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+    </ion-slide>
+
+    <ion-slide>
+      <h2>Slide 2</h2>
+    </ion-slide>
+
+    <ion-slide>
+      <h2>Slide 3</h2>
+    </ion-slide>
+
+  </ion-slides>
+</ion-content>
