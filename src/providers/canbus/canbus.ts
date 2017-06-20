@@ -26,7 +26,7 @@ export class CanbusProvider {
         if(data.a !== null) { frame.a.value = data.a; }
       }
       
-      this.frames[frame.id.hex] = frame;
+      this.frames[data.id] = frame;
     });
 
     // events.subscribe('canbus:data', (data) => {
