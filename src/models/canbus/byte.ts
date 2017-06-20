@@ -22,8 +22,11 @@ export class Byte {
   }
 
   get hex() {
-    let h = (this.value).toString(16).toUpperCase();
-    return h.length === 1 ? '0x' + '0' + h : '0x' + h;;
+    if(this.value != null) {
+      let h = (this.value).toString(16).toUpperCase();
+      return h.length === 1 ? '0x' + '0' + h : '0x' + h;
+    }
+    return "";
   }
 
   get ascii() {

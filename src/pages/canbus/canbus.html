@@ -6,14 +6,14 @@
       <!--{{f.value.id}}
       {{f.value.a}}-->
       <ion-col class="flex-col">{{f.value.id}}</ion-col>
-      <ion-col *ngIf="f.value.a != undefined" class="flex-col" [style.color]="f.value.a.changed == true ? 'red' : ''">{{f.value.a}}</ion-col>
-      <ion-col *ngIf="f.value.b != undefined" class="flex-col" [style.color]="f.value.a.changed == true ? 'red' : ''">{{f.value.b}}</ion-col>
-      <ion-col *ngIf="f.value.c != undefined" class="flex-col" [style.color]="f.value.a.changed == true ? 'red' : ''">{{f.value.c}}</ion-col>
-      <ion-col *ngIf="f.value.d != undefined" class="flex-col" [style.color]="f.value.a.changed == true ? 'red' : ''">{{f.value.d}}</ion-col>
-      <!--<ion-col *ngIf="f.value.e != undefined" class="flex-col" [style.color]="f.value.a.changed == true ? 'red' : ''">{{f.value.e}}</ion-col>
-      <ion-col *ngIf="f.value.f != undefined" class="flex-col" [style.color]="f.value.a.changed == true ? 'red' : ''">{{f.value.f}}</ion-col>
-      <ion-col *ngIf="f.value.g != undefined" class="flex-col" [style.color]="f.value.a.changed == true ? 'red' : ''">{{f.value.g}}</ion-col>
-      <ion-col *ngIf="f.value.h != undefined" class="flex-col" [style.color]="f.value.a.changed == true ? 'red' : ''">{{f.value.h}}</ion-col>-->
+      <ion-col *ngIf="f.value.a != null" class="flex-col" [style.color]="f.value.a.changed == true ? 'red' : ''">{{f.value.a}}</ion-col>
+      <ion-col *ngIf="f.value.b != null" class="flex-col" [style.color]="f.value.b.changed == true ? 'red' : ''">{{f.value.b}}</ion-col>
+      <ion-col *ngIf="f.value.c != null" class="flex-col" [style.color]="f.value.c.changed == true ? 'red' : ''">{{f.value.c}}</ion-col>
+      <ion-col *ngIf="f.value.d != null" class="flex-col" [style.color]="f.value.d.changed == true ? 'red' : ''">{{f.value.d}}</ion-col>
+      <ion-col *ngIf="f.value.e != null" class="flex-col" [style.color]="f.value.e.changed == true ? 'red' : ''">{{f.value.e}}</ion-col>
+      <ion-col *ngIf="f.value.f != null" class="flex-col" [style.color]="f.value.f.changed == true ? 'red' : ''">{{f.value.f}}</ion-col>
+      <ion-col *ngIf="f.value.g != null" class="flex-col" [style.color]="f.value.g.changed == true ? 'red' : ''">{{f.value.g}}</ion-col>
+      <ion-col *ngIf="f.value.h != null" class="flex-col" [style.color]="f.value.h.changed == true ? 'red' : ''">{{f.value.h}}</ion-col>
       <ion-col class="flex-col">{{f.ascii}}</ion-col>
       <!--<ion-col>
         <button ion-button icon-only color="dark">

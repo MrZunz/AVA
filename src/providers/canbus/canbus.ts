@@ -37,7 +37,7 @@ export class CanbusProvider {
 
       this.frames[newFrame.id.hex] = newFrame;
 
-      //console.log('canbus:frame', newFrame);
+      // console.log('canbus:frame', newFrame);
       // events.publish('canbus:frame', newFrame);
 
     });
@@ -50,14 +50,13 @@ export class CanbusProvider {
     // }, 1)
 
     // MORE FAKE DATA FFS
-    this.Render();
+    //this.Render();
   }
 
   Render = () => {
     //this.generateFakeFrame();
     for(var i = 0; i < 15; i++) {
-      let fakeData = this.generateFakeData();
-      this.events.publish('canbus:data', fakeData);
+      this.events.publish('canbus:data', this.generateFakeData());
     }
 
     requestAnimationFrame(this.Render);
