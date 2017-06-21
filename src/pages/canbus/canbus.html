@@ -1,13 +1,34 @@
 <titlebar [title]="'Canbus'"></titlebar>
 
 <ion-content padding>
-  <ion-grid>
+
+  <table>
+    <tr *ngFor="let f of canbus.frames | keys">
+      <td>{{f.value}}</td>
+      <td>{{f.ascii}}</td> <!-- y u no work? -->
+    </tr>
+  </table>
+
+  <!--<ion-grid>-->
+
     <!--<ion-row *ngFor="let f of canbus.frames | keys">-->
+
+      <!--{{f.value}}-->
+      <!--<ion-col >{{f.ascii}}</ion-col>-->
+
       <!--{{f.value.id}}
       {{f.value.a}}-->
 
-      <!--<ion-col class="flex-col">{{f.value.id}}</ion-col>
-      <ion-col *ngIf="f.value.a != null" class="flex-col" [style.color]="f.value.a.changed == true ? 'red' : ''">{{f.value.a}}</ion-col>-->
+      <!--<ion-col class="flex-col">{{f.value.id}}</ion-col>-->
+      <!--<ion-col >{{f.value.id}}</ion-col>
+      <ion-col >{{f.value.a}}</ion-col>
+      <ion-col >{{f.value.b}}</ion-col>
+      <ion-col >{{f.value.c}}</ion-col>
+      <ion-col >{{f.value.d}}</ion-col>
+      <ion-col >{{f.value.e}}</ion-col>
+      <ion-col >{{f.value.f}}</ion-col>
+      <ion-col >{{f.value.g}}</ion-col>
+      <ion-col >{{f.value.h}}</ion-col>-->
 
       <!--<ion-col *ngIf="f.value.b != null" class="flex-col" [style.color]="f.value.b.changed == true ? 'red' : ''">{{f.value.b}}</ion-col>
       <ion-col *ngIf="f.value.c != null" class="flex-col" [style.color]="f.value.c.changed == true ? 'red' : ''">{{f.value.c}}</ion-col>
@@ -18,6 +39,7 @@
       <ion-col *ngIf="f.value.h != null" class="flex-col" [style.color]="f.value.h.changed == true ? 'red' : ''">{{f.value.h}}</ion-col>-->
 
       <!--<ion-col class="flex-col">{{f.ascii}}</ion-col>-->
+
       <!--<ion-col>
         <button ion-button icon-only color="dark">
           <ion-icon name="heart-outline"></ion-icon>
@@ -25,5 +47,6 @@
       </ion-col>-->
 
     <!--</ion-row>-->
-  </ion-grid>
+
+  <!--</ion-grid>-->
 </ion-content>

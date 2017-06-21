@@ -11,7 +11,7 @@ export class Frame {
   g: Byte;
   h: Byte;
 
-  ascii() {
+  get ascii() {
     let ascii = "";
     if(this.a.ascii) { ascii += this.a.ascii }
     if(this.b.ascii) { ascii += this.b.ascii }
@@ -28,23 +28,14 @@ export class Frame {
   toString() {
     let stringToReturn = "";
     if(this.id) { stringToReturn += this.id.hex + " " }
-    if(this.a.value) { stringToReturn += this.a.hex + " " }
-    if(this.b.value) { stringToReturn += this.b.hex + " " }
-    if(this.c.value) { stringToReturn += this.c.hex + " " }
-    if(this.d.value) { stringToReturn += this.d.hex + " " }
-    if(this.e.value) { stringToReturn += this.e.hex + " " }
-    if(this.f.value) { stringToReturn += this.f.hex + " " }
-    if(this.g.value) { stringToReturn += this.g.hex + " " }
-    if(this.h.value) { stringToReturn += this.h.hex + " " }
-
-    if(this.a.ascii) { stringToReturn += this.a.ascii }
-    if(this.b.ascii) { stringToReturn += this.b.ascii }
-    if(this.c.ascii) { stringToReturn += this.c.ascii }
-    if(this.d.ascii) { stringToReturn += this.d.ascii }
-    if(this.e.ascii) { stringToReturn += this.e.ascii }
-    if(this.f.ascii) { stringToReturn += this.f.ascii }
-    if(this.g.ascii) { stringToReturn += this.g.ascii }
-    if(this.h.ascii) { stringToReturn += this.h.ascii }
+    if(this.a.value) { stringToReturn += this.a.hex + " " } else { stringToReturn += "   " }
+    if(this.b.value) { stringToReturn += this.b.hex + " " } else { stringToReturn += "   " }
+    if(this.c.value) { stringToReturn += this.c.hex + " " } else { stringToReturn += "   " }
+    if(this.d.value) { stringToReturn += this.d.hex + " " } else { stringToReturn += "   " }
+    if(this.e.value) { stringToReturn += this.e.hex + " " } else { stringToReturn += "   " }
+    if(this.f.value) { stringToReturn += this.f.hex + " " } else { stringToReturn += "   " }
+    if(this.g.value) { stringToReturn += this.g.hex + " " } else { stringToReturn += "   " }
+    if(this.h.value) { stringToReturn += this.h.hex + " " } else { stringToReturn += "   " }
 
     return stringToReturn;
   }

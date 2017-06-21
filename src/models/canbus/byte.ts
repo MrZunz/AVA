@@ -26,7 +26,7 @@ export class Byte {
       let h = (this.value).toString(16).toUpperCase();
       return h.length === 1 ? '0x' + '0' + h : '0x' + h;
     }
-    return "";
+    return null;
   }
 
   get ascii() {
