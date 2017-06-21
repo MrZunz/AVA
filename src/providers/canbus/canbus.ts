@@ -21,17 +21,7 @@ export class CanbusProvider {
       this.numberOfFramesPerSecond = 0;
     }, 1000);
 
-
-
-
-    // events.subscribe('canbus:data', (data) => {
-    //   this.numberOfFramesPerSecond++;
-
-    //   let frame = this.frameFromData(data);
-    //   this.frames[frame.id.hex] = frame;
-    // });
-
-    // MORE FAKE DATA FFS
+    // FAKE DATA
     this.Render();
   }
 
