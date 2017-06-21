@@ -2,9 +2,9 @@
 
 <ion-content padding>
   <ion-grid>
-    <ion-row *ngFor="let f of canbus.frames | keys">
-      {{f.value.id}}
-      {{f.value.a}}
+    <!--<ion-row *ngFor="let f of canbus.frames | keys">-->
+      <!--{{f.value.id}}
+      {{f.value.a}}-->
 
       <!--<ion-col class="flex-col">{{f.value.id}}</ion-col>
       <ion-col *ngIf="f.value.a != null" class="flex-col" [style.color]="f.value.a.changed == true ? 'red' : ''">{{f.value.a}}</ion-col>-->
@@ -17,13 +17,13 @@
       <ion-col *ngIf="f.value.g != null" class="flex-col" [style.color]="f.value.g.changed == true ? 'red' : ''">{{f.value.g}}</ion-col>
       <ion-col *ngIf="f.value.h != null" class="flex-col" [style.color]="f.value.h.changed == true ? 'red' : ''">{{f.value.h}}</ion-col>-->
 
-      <ion-col class="flex-col">{{f.ascii}}</ion-col>
+      <!--<ion-col class="flex-col">{{f.ascii}}</ion-col>-->
       <!--<ion-col>
         <button ion-button icon-only color="dark">
           <ion-icon name="heart-outline"></ion-icon>
         </button>
       </ion-col>-->
 
-    </ion-row>
+    <!--</ion-row>-->
   </ion-grid>
 </ion-content>

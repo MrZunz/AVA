@@ -26,6 +26,7 @@ export class CanbusProvider {
         if(data.a !== null) { frame.a.value = data.a; }
       }
       
+      this.numberOfFramesPerSecond++;
       this.frames[data.id] = frame;
     });
 
