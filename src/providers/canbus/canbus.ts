@@ -14,6 +14,7 @@ export class CanbusProvider {
     socket.canbusData.subscribe(data => {
       let frame = this.frameFromData(data);
       this.frames[frame.id.hex] = frame;
+      this.numberOfFramesPerSecond++;
     });
 
     setInterval(() => {
