@@ -12,8 +12,7 @@ export class CanbusProvider {
   constructor(public events: Events, public socket: SocketProvider) {
 
     socket.canbusData.subscribe(data => {
-      let frame = this.frameFromData(data);
-      this.frames[frame.id.hex] = frame;
+      this.frames[data.id] = this.frameFromData(data);;
       this.numberOfFramesPerSecond++;
     });
 
@@ -33,42 +32,46 @@ export class CanbusProvider {
     // });
 
     // MORE FAKE DATA FFS
-    //this.Render();
+    this.Render();
   }
 
   frameFromData(data) : Frame {
-    let newFrame = new Frame();
-    newFrame.id = new Byte(data.id);
 
-    if(data.a !== null) { newFrame.a = new Byte(data.a); }
-    if(data.b !== null) { newFrame.b = new Byte(data.b); }
-    if(data.c !== null) { newFrame.c = new Byte(data.c); }
-    if(data.d !== null) { newFrame.d = new Byte(data.d); }
-    if(data.e !== null) { newFrame.e = new Byte(data.e); }
-    if(data.f !== null) { newFrame.f = new Byte(data.f); }
-    if(data.g !== null) { newFrame.g = new Byte(data.g); }
-    if(data.h !== null) { newFrame.h = new Byte(data.h); }
+    let frame : Frame = this.frames[data.id];
 
-    let oldFrame : Frame = this.frames[newFrame.id.hex as string];
-
-    if(oldFrame != null) {
-      if(oldFrame.a.value != newFrame.a.value) { newFrame.a.changed = true; }
-      if(oldFrame.b.value != newFrame.b.value) { newFrame.b.changed = true; }
-      if(oldFrame.c.value != newFrame.c.value) { newFrame.c.changed = true; }
-      if(oldFrame.d.value != newFrame.d.value) { newFrame.d.changed = true; }
-      if(oldFrame.e.value != newFrame.e.value) { newFrame.e.changed = true; }
-      if(oldFrame.f.value != newFrame.f.value) { newFrame.f.changed = true; }
-      if(oldFrame.g.value != newFrame.g.value) { newFrame.g.changed = true; }
-      if(oldFrame.h.value != newFrame.h.value) { newFrame.h.changed = true; }
+    if(frame == null) {
+      // create new frame
+      frame = new Frame();
+      frame.id = new Byte(data.id);
+      frame.a = new Byte(data.a);
+      frame.b = new Byte(data.b);
+      frame.c = new Byte(data.c);
+      frame.d = new Byte(data.d);
+      frame.e = new Byte(data.e);
+      frame.f = new Byte(data.f);
+      frame.g = new Byte(data.g);
+      frame.h = new Byte(data.h);
+    }
+    else {
+      // update existing frame
+      frame.a.value = data.a;
+      frame.b.value = data.b;
+      frame.c.value = data.c;
+      frame.d.value = data.d;
+      frame.e.value = data.e;
+      frame.f.value = data.f;
+      frame.g.value = data.g;
+      frame.h.value = data.h;
     }
 
-    return newFrame;
+    return frame;
   }
 
   Render = () => {
     for(var i = 0; i < 25; i++) {
+      let frame = this.frameFromData(this.generateFakeData());
+      this.frames[frame.id.value as number] = frame;
       this.numberOfFramesPerSecond++;
-      this.events.publish('canbus:data', this.generateFakeData());
     }
     requestAnimationFrame(this.Render);
   }

@@ -13,14 +13,14 @@ export class Frame {
 
   get ascii() {
     let ascii = "";
-    if(this.a.ascii) { ascii += this.a.ascii }
-    if(this.b.ascii) { ascii += this.b.ascii }
-    if(this.c.ascii) { ascii += this.c.ascii }
-    if(this.d.ascii) { ascii += this.d.ascii }
-    if(this.e.ascii) { ascii += this.e.ascii }
-    if(this.f.ascii) { ascii += this.f.ascii }
-    if(this.g.ascii) { ascii += this.g.ascii }
-    if(this.h.ascii) { ascii += this.h.ascii }
+    if(this.a.value) { ascii += this.a.ascii }
+    if(this.b.value) { ascii += this.b.ascii }
+    if(this.c.value) { ascii += this.c.ascii }
+    if(this.d.value) { ascii += this.d.ascii }
+    if(this.e.value) { ascii += this.e.ascii }
+    if(this.f.value) { ascii += this.f.ascii }
+    if(this.g.value) { ascii += this.g.ascii }
+    if(this.h.value) { ascii += this.h.ascii }
 
     return ascii;
   }

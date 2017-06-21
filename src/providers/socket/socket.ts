@@ -37,7 +37,7 @@ export class SocketProvider {
     this.socket.on('canbus', (data) => {
       //this.events.publish('canbus:data', data);
       //console.log('canbus data:', data);
-      this.canbusDataObserver.next(data);
+      //this.canbusDataObserver.next(data);
     })
   }
 }
