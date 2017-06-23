@@ -1,28 +1,55 @@
 import { SocketProvider } from './../socket/socket';
-import { Injectable } from '@angular/core';
+import { Injectable, NgZone } from '@angular/core';
 import { Events } from 'ionic-angular';
 import { Frame, Byte } from '../../models/canbus';
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/distinctUntilChanged';
 
 @Injectable()
 export class CanbusProvider {
 
   frames: Object = {};
+  framesToDisplay: Object = {};
   numberOfFramesPerSecond = 0;
 
-  constructor(public events: Events, public socket: SocketProvider) {
+  constructor(public events: Events, public socket: SocketProvider, public zone: NgZone) {
 
-    socket.canbusData.subscribe(data => {
-      this.frames[data.id] = this.frameFromData(data);;
-      this.numberOfFramesPerSecond++;
+    this.zone.runOutsideAngular(() => {
+      
+      socket.canbusData.subscribe(data => { //.distinctUntilChanged()
+        this.numberOfFramesPerSecond++;
+        this.frames[data.id] = this.frameFromData(data);
+      });
+
+      setInterval(() => {
+        console.log('Number of frames to proces in one second:', this.numberOfFramesPerSecond);
+        this.numberOfFramesPerSecond = 0;
+      }, 1000);
+
+      setInterval(() => {
+        this.zone.run(() => {
+          this.framesToDisplay = Object.assign({}, this.frames);
+        });
+      }, 5000);
+
+      // FAKE DATA
+      //this.Render();
+
     });
 
-    setInterval(() => {
-      console.log('Number of frames to proces in one second:', this.numberOfFramesPerSecond);
-      this.numberOfFramesPerSecond = 0;
-    }, 1000);
+  }
 
-    // FAKE DATA
-    this.Render();
+  Render = () => {
+    for(var i = 0; i < 25; i++) {
+
+      this.numberOfFramesPerSecond++;
+      let frame = this.frameFromData(this.generateFakeData());
+      //this.zone.run(() => {
+        this.frames[frame.id.value as number] = frame;
+      //});
+
+    }
+    requestAnimationFrame(this.Render);
   }
 
   frameFromData(data) : Frame {
@@ -55,15 +82,6 @@ export class CanbusProvider {
     }
 
     return frame;
-  }
-
-  Render = () => {
-    for(var i = 0; i < 25; i++) {
-      let frame = this.frameFromData(this.generateFakeData());
-      this.frames[frame.id.value as number] = frame;
-      this.numberOfFramesPerSecond++;
-    }
-    requestAnimationFrame(this.Render);
   }
 
   generateFakeData() {
