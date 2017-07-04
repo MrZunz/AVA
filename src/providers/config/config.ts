@@ -22,4 +22,5 @@ class HotspotConfig {
 
 class SocketConfig {
   host: string = "http://192.168.192.50:3000/";
+  // host: string = "http://zunz.io:3000/";
 }

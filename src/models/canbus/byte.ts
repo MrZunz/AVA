@@ -1,9 +1,9 @@
 export class Byte {
-  _value: Number;
+  _value: number;
   changed: Boolean = false;
   empty: Boolean = true;
 
-  constructor(value: Number) {
+  constructor(value: number) {
     this.value = value;
   }
 
@@ -30,7 +30,7 @@ export class Byte {
   }
 
   get ascii() {
-    return String.fromCharCode(this.value as number)
+    return String.fromCharCode(this.value)
   }
 
   toString() {

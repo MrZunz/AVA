@@ -1,4 +1,4 @@
-import { Injectable, NgZone } from '@angular/core';
+import { Injectable } from '@angular/core';
 // import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import {Observable} from 'rxjs/Observable';
@@ -14,7 +14,7 @@ export class SocketProvider {
   canbusData: any;
   canbusDataObserver: any;
 
-  constructor(private config: ConfigProvider, public events: Events, public zone: NgZone) {
+  constructor(private config: ConfigProvider, public events: Events) {
     console.log('Hello SocketProvider Provider');
 
     this.canbusData = Observable.create(observer => {
@@ -34,13 +34,13 @@ export class SocketProvider {
       this.events.publish('socket:disconnected');
     });
 
+
     this.socket.on('canbus', (data) => {
       //this.events.publish('canbus:data', data);
       //console.log('canbus data:', data);
-      
-      this.zone.runOutsideAngular(() => {
-        this.canbusDataObserver.next(data);
-      });
+
+      this.canbusDataObserver.next(data);
     })
+
   }
 }

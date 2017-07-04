@@ -1,6 +1,7 @@
 import { CanbusProvider } from './../../providers/canbus/canbus';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Frame, Byte } from '../../models/canbus';
 
 /**
  * Generated class for the CanbusPage page.
@@ -16,9 +17,17 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class CanbusPage {
 
   canbus : CanbusProvider;
+  // frames: Object = {};
 
   constructor(public navCtrl: NavController, public navParams: NavParams, canbus: CanbusProvider) {
     this.canbus = canbus;
+
+    // this.canbus.frameData.subscribe((data) => {
+    //   //console.log(frame);
+    //   let frame = this.canbus.frameFromData(data);
+    //   this.frames[frame.id.value as number] = frame;
+    // });
+
   }
 
   ionViewDidLoad() {
